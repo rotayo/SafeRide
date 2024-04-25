@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.usuario.ReporteIncidenteDosUsuario"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid x:Name="GridPrincipal" BackgroundColor="#EEEEEE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".15*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height=".6*"/>
+            </Grid.RowDefinitions>
+
+            <!--Barra-->
+            <Frame Grid.Row="0" BackgroundColor="#362FD9">
+                <Grid>
+                    <Image Grid.Column="0" Source="backpf.png" HorizontalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Back}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="1" Text="SafeRide" FontSize="25" TextColor="#EEEEEE" HorizontalOptions="Center"/>
+                    <Image Grid.Column="2" Source="usuariopfwhite.png" HorizontalOptions="End">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Profile}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </Frame>
+            <!--Barra-->
+
+
+            <Grid Grid.Row="1">
+                <Label Grid.Row="0" 
+                       Text="¿Qué sucedio?" FontSize="30" Margin="0,0,0,50"
+                       Style="{StaticResource Title}" TextColor="#2E97A7"/>
+                <Frame Grid.Row="0" Style="{StaticResource Frame-Entry-blue}" 
+                       Padding="1" BackgroundColor="#2E97A7" VerticalOptions="End" Margin="0,50,0,0">
+                    <Frame Style="{StaticResource Frame-Entry-blue}" BorderColor="#2E97A7">
+                        <Entry Placeholder="Descripción" PlaceholderColor="#2E97A7" TextColor="#2E97A7"
+                               Style="{StaticResource Entry-blue}" MaxLength="500" Text="{Binding Incidente.descripcion}"/>
+                    </Frame>
+                </Frame>
+
+                <Label Grid.Row="1" 
+                       Text="Información del otro afectado" FontSize="30" Margin="0,0,0,50"
+                       Style="{StaticResource Title}" TextColor="#2E97A7"/>
+                <Frame Grid.Row="1" Style="{StaticResource Frame-Entry-blue}" 
+                       Padding="1" BackgroundColor="#2E97A7" VerticalOptions="End" Margin="0,0,0,0">
+                    <Frame Style="{StaticResource Frame-Entry-blue}" BorderColor="#2E97A7" >
+                        <Entry Placeholder="Cédula" PlaceholderColor="#2E97A7" TextColor="#2E97A7"
+                               Style="{StaticResource Entry-blue}" Text="{Binding Incidente.id_afectado}"/>
+                    </Frame>
+                </Frame>
+            </Grid>
+
+            <Button Grid.Row="2"
+                    Text="Crear Reporte"
+                    Style="{StaticResource btn-blue}" BackgroundColor="Crimson"
+                    Command="{Binding Crear}"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.administrador.ListaIncidentesAdministrador"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#EEEEEE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Barra -->
+            <Frame Grid.Row="0" BackgroundColor="#362FD9">
+                <Grid>
+                    <Image Grid.Column="0" Source="backpf.png" HorizontalOptions="Start" HeightRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                         Command="{Binding CambiarPagina}" CommandParameter="back"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="1" Text="SafeRide" FontSize="25" TextColor="#EEEEEE" HorizontalOptions="Center"/>
+                    <Image Grid.Column="2" Source="usuariopfwhite.png" HorizontalOptions="End" HeightRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                          Command="{Binding CambiarPagina}" CommandParameter="perfil"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </Frame>
+            
+            <Label Grid.Row="1"
+                   Text="Incidentes"
+                   VerticalOptions="Start"
+                   Style="{StaticResource Title}"/>
+
+            <Frame Grid.Row="2" Style="{StaticResource Frame-Entry-blue}" HeightRequest="100"
+                   Padding="1" BackgroundColor="#362FD9">
+                <Frame Style="{StaticResource Frame-Entry-blue}" BorderColor="#362FD9">
+                    <SearchBar Placeholder="Buscar ID..."
+                           x:Name="txtSearch"
+                           TextChanged="txtSearch_TextChanged"/>
+                </Frame>
+            </Frame>
+
+            <Picker x:Name="PickerFiltros" 
+                    Grid.Row="3" 
+                    PropertyChanged="PickerFiltros_PropertyChanged"
+                    Style="{StaticResource Picker-Filtro}"/>
+
+            <ListView x:Name="listaIncidentes" Grid.Row="4" RowHeight="240" ItemSelected="listaUsuarios_ItemSelected">
+                <ListView.ItemTemplate >
+                    <DataTemplate >
+                        <ViewCell >
+                            <Frame Grid.Row="0" Style="{StaticResource Frame-Element}"
+                                   Margin="0,10,0,10" BorderColor="#362FD9">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label  Grid.Row="0" 
+                                            Text="{Binding id_lbl}" FontSize="Large"
+                                            Style="{StaticResource Lbl-Element}"/>
+                                    <Label  Grid.Row="1" Grid.ColumnSpan="2"
+                                            Text="{Binding id_agente}"
+                                            Style="{StaticResource Lbl-Element}"
+                                            HorizontalOptions="Start">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding id_agente}" Value="Agente: Ningún agente asignado">
+                                                <Setter Property="TextColor" Value="Crimson" />
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+                                    <Label  Grid.Row="2"
+                                            Text="{Binding fechaHora}" Grid.ColumnSpan="2"
+                                            Style="{StaticResource Lbl-Element}"/>
+                                    <Button Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                                            Text="{Binding estado}" TextColor="White"
+                                            Style="{StaticResource btn-blue}"
+                                            HorizontalOptions="End"
+                                            Command="{Binding PaginaIncidente}" CommandParameter="{Binding id}">
+                                        <Button.Triggers>
+                                            <DataTrigger TargetType="Button" Binding="{Binding estado}" Value="Pendiente">
+                                                <Setter Property="BackgroundColor" Value="Crimson" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Button" Binding="{Binding estado}" Value="Asignado">
+                                                <Setter Property="BackgroundColor" Value="#1AACAC" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Button" Binding="{Binding estado}" Value="Procesando">
+                                                <Setter Property="BackgroundColor" Value="#FFC000" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Button" Binding="{Binding estado}" Value="Finalizado">
+                                                <Setter Property="BackgroundColor" Value="#362FD9" />
+                                            </DataTrigger>
+                                        </Button.Triggers>
+                                    </Button>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PaginaIncidente}" CommandParameter="{Binding id}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

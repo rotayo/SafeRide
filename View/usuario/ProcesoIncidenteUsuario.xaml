@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.usuario.ProcesoIncidenteUsuario"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#362FD9">
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                   Text="Su Incidente está siendo procesado"
+                   TextColor="#EEEEEE" HorizontalTextAlignment="Center"  Margin="0,40,0,0"
+                   Style="{StaticResource Title}"/>
+                <Label Grid.Row="1"
+                   Text="Porfavor, mantenga la calma y no se mueva del punto donde hizo el reporte, un agente atenderá su caso brevemente"
+                   TextColor="#EEEEEE" HorizontalTextAlignment="Center" FontAttributes="None" Margin="0,40,0,0"
+                   Style="{StaticResource Lbl-Element}"/>
+                <Image Grid.Row="2"
+                       Source="loading3.gif" 
+                       IsAnimationPlaying="True" Margin="0,150,0,0"
+                       HeightRequest="150"/>
+            </Grid>
+            
+            <Label Grid.Row="1"
+                   Text="{Binding NombreAgente}"
+                   TextColor="#EEEEEE" FontSize="30"
+                   Style="{StaticResource Title}"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.administrador.MainPageAdministrador"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#EEEEEE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Barra -->
+            <Frame Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#362FD9">
+                <Grid>
+                    <Label Grid.Column="1" Text="SafeRide" FontSize="25" TextColor="#EEEEEE" HorizontalOptions="Center"/>
+                    <Image Grid.Column="2" Source="usuariopfwhite.png" HorizontalOptions="End" HeightRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                        Command="{Binding CambiarPagina}"
+                        CommandParameter="perfil"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </Frame>
+
+            <Label Grid.Row="1" Grid.ColumnSpan="2"
+                   Text="Administrador"
+                   VerticalOptions="End" Margin="0,100,0,100"
+                   Style="{StaticResource Title}"/>
+            
+            <Frame Grid.Row="2" 
+                   Grid.Column="0" 
+                   BackgroundColor="#EEEEEE" 
+                   BorderColor="#362FD9"
+                   Margin="10"
+                   HeightRequest="350" VerticalOptions="Center">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CambiarPagina}" CommandParameter="usuarios"/>
+                </Frame.GestureRecognizers>
+
+                <StackLayout VerticalOptions="Center">
+                    <Image Source="usuariopf.png"
+                           HeightRequest="150" WidthRequest="150"/>
+                    <Label Text="Usuarios"
+                           Style="{StaticResource Title}"
+                           FontAttributes="None"
+                           FontSize="40"/>
+                    <Button Text="Administrar"
+                            Style="{StaticResource btn-blue}"
+                            Margin="0,50,0,0">
+                        <Button.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CambiarPagina}" CommandParameter="usuarios"/>
+                        </Button.GestureRecognizers>
+                    </Button>
+                </StackLayout>
+                
+            </Frame>
+
+            <Frame Grid.Row="2" 
+                   Grid.Column="1" 
+                   BackgroundColor="#EEEEEE"
+                   BorderColor="#362FD9"
+                   Margin="10"
+                   HeightRequest="350" VerticalOptions="Center">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CambiarPagina}" CommandParameter="incidentes"/>
+                </Frame.GestureRecognizers>
+
+                <StackLayout VerticalOptions="Center">
+                    <Image Source="carroLogo.png"
+                           HeightRequest="150" WidthRequest="150"/>
+                    <Label Text="Incidentes"
+                           Style="{StaticResource Title}"
+                           FontAttributes="None"
+                           FontSize="40"
+                           VerticalOptions="Center"/>
+                    <Button Text="Administrar"
+                            Style="{StaticResource btn-blue}"
+                            Margin="0,50,0,0">
+                        <Button.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CambiarPagina}" CommandParameter="usuarios"/>
+                        </Button.GestureRecognizers>
+                    </Button>
+                </StackLayout>
+
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.EditarPerfilPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#EEEEEE">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".2*"/>
+                <RowDefinition Height=".6*"/>
+                <RowDefinition Height=".2*"/>
+            </Grid.RowDefinitions>
+
+            <Label Text="Editar Pérfil" Grid.Row="0"
+           Style="{StaticResource Title}"/>
+
+            <Image Source="backpf.png" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="80">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Back}"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Grid Grid.Row="1">
+                <Frame Grid.Row="0" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#362FD9">
+                    <Frame Style="{StaticResource Frame-Entry-blue}">
+                        <Entry Placeholder="Nombre" 
+                               Style="{StaticResource Entry-blue}" 
+                               Text="{Binding Usuario.nombre}"/>
+                    </Frame>
+                </Frame>
+
+                <Frame Grid.Row="1" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#362FD9">
+                    <Frame Style="{StaticResource Frame-Entry-blue}">
+                        <Entry Placeholder="Apellido"
+                               Style="{StaticResource Entry-blue}"
+                               Text="{Binding Usuario.apellido}"/>
+                    </Frame>
+                </Frame>
+
+                <Frame Grid.Row="2" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#362FD9">
+                    <Frame Style="{StaticResource Frame-Entry-blue}">
+                        <Entry Placeholder="Telefono" Keyboard="Telephone"
+                               Style="{StaticResource Entry-blue}"
+                               Text="{Binding Usuario.telefono}"/>
+                    </Frame>
+                </Frame>
+
+                <Frame Grid.Row="3" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#362FD9">
+                    <Frame Style="{StaticResource Frame-Entry-blue}">
+                        <Entry Placeholder="Correo" Keyboard="Email"
+                               Style="{StaticResource Entry-blue}"
+                               Text="{Binding Usuario.email}"/>
+                    </Frame>
+                </Frame>
+
+                <Frame Grid.Row="4" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#362FD9">
+                    <Frame Style="{StaticResource Frame-Entry-blue}">
+                        <Entry Placeholder="Contraseña" 
+                               Style="{StaticResource Entry-blue}"
+                               Text="{Binding Usuario.contrasena}"/>
+                    </Frame>
+                </Frame>
+            </Grid>
+
+            <Button Grid.Row="2"
+                    Command="{Binding Actualizar}" 
+                    Text="Actualizar"
+                    Style="{StaticResource btn-blue}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

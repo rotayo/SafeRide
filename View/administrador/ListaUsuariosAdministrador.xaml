@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.administrador.ListaUsuariosAdministrador"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#EEEEEE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Barra -->
+            <Frame Grid.Row="0" BackgroundColor="#362FD9">
+                <Grid>
+                    <Image Grid.Column="0" Source="backpf.png" HorizontalOptions="Start" WidthRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                 Command="{Binding CambiarPagina}" CommandParameter="back"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="1" Text="SafeRide" FontSize="25" TextColor="#EEEEEE" HorizontalOptions="Center"/>
+                    <Image Grid.Column="2" Source="usuariopfwhite.png" HorizontalOptions="End" WidthRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                  Command="{Binding CambiarPagina}" CommandParameter="perfil"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </Frame>
+
+            <Label Grid.Row="1"
+                   Text="Usuarios"
+                   VerticalOptions="Start"
+                   Style="{StaticResource Title}"/>
+
+            <Frame Grid.Row="2" Style="{StaticResource Frame-Entry-blue}" HeightRequest="100"
+                   Padding="1" BackgroundColor="#362FD9">
+                <Frame Style="{StaticResource Frame-Entry-blue}" BorderColor="#362FD9">
+                        <SearchBar Placeholder="Buscar Nombre..."
+                                   x:Name="txtSearch"
+                                   TextChanged="txtSearch_TextChanged"/>
+                </Frame>
+            </Frame>
+
+            <Picker x:Name="PickerFiltros" 
+                    Grid.Row="3" 
+                    PropertyChanged="PickerFiltros_PropertyChanged"
+                    Style="{StaticResource Picker-Filtro}"/>
+
+            <ListView x:Name="listaUsuarios" Grid.Row="4" RowHeight="240" ItemSelected="listaUsuarios_ItemSelected">
+                <ListView.ItemTemplate >
+                    <DataTemplate >
+                        <ViewCell >
+                            <Frame Grid.Row="0" Style="{StaticResource Frame-Element}"
+                                   Margin="0,10,0,10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label  Grid.Row="0"
+                                            Text="{Binding nombreCompleto}"
+                                            Style="{StaticResource Lbl-Element}"/>
+                                    <Image  Grid.Row="0" Grid.Column="2" 
+                                            Style="{StaticResource Img-Element}"/>
+                                    <Label  Grid.Row="1"
+                                            Text="{Binding cedula}"
+                                            Style="{StaticResource Lbl-Element}"
+                                            HorizontalOptions="Start"/>
+                                    <Label  Grid.Row="2"
+                                            Text="{Binding rol}"
+                                            Style="{StaticResource Lbl-Element}"/>
+                                    <Button Grid.Row="3"
+                                            Text="{Binding estado}" TextColor="White"
+                                            Style="{StaticResource btn-blue}"
+                                            IsTabStop="False">
+                                        <Button.Triggers>
+                                            <DataTrigger TargetType="Button" Binding="{Binding estado}" Value="Activo">
+                                                <Setter Property="BackgroundColor" Value="#1AACAC" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Button" Binding="{Binding estado}" Value="Desactivado">
+                                                <Setter Property="BackgroundColor" Value="Crimson" />
+                                            </DataTrigger>
+                                        </Button.Triggers>
+                                    </Button>
+                                </Grid>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PaginaUsuario}" CommandParameter="{Binding id}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>     
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

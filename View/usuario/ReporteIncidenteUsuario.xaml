@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.usuario.ReporteIncidenteUsuario"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid x:Name="GridPrincipal" BackgroundColor="#EEEEEE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".15*"/>
+                <RowDefinition Height=".5*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--Barra-->
+            <Frame Grid.Row="0" BackgroundColor="#362FD9">
+                <Grid>
+                    <Image Grid.Column="0" Source="backpf.png" HorizontalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Back}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="1" Text="SafeRide" FontSize="25" TextColor="#EEEEEE" HorizontalOptions="Center"/>
+                    <Image Grid.Column="2" Source="usuariopfwhite.png" HorizontalOptions="End">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                 Command="{Binding Profile}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </Frame>
+            <!--Barra-->
+
+            <Image Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,50,0,0"
+                   Source="pin.png"
+                   WidthRequest="150" HeightRequest="150"/>
+
+            <Label Grid.Row="2" Text="Mi Ubicación" Style="{StaticResource Title}" FontAttributes="Bold" />
+
+            <Label Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,100,0,0"
+                   Text="Verifique que la dirección sea la correcta" TextColor="#362FD9"
+                   FontSize="20"/>
+
+            <Label Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,160,0,0"
+                   Text="Active los permisos de ubicación para obtener tu dirección exacta" TextColor="#2E97A7"
+                   FontSize="15"/>
+
+            <Button Grid.Row="2" VerticalOptions="End" Margin="0,0,0,50"
+                    Text="Continuar" Style="{StaticResource btn-blue}"
+                    Command="{Binding Next}"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

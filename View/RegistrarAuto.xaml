@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.RegistrarAuto"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid BackgroundColor="#EEEEEE">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".6*"/>
+            <RowDefinition Height=".2*"/>
+        </Grid.RowDefinitions>
+
+        <Label Text="Datos del Automóvil" 
+               Grid.Row="0"
+               HorizontalTextAlignment="Center"
+               Style="{StaticResource Title}" TextColor="#2E97A7"/>
+
+        <Image Source="backpf.png" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="60">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Back}"/>
+            </Image.GestureRecognizers>
+        </Image>
+
+        <Grid Grid.Row="1">
+            <Frame Grid.Row="0" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#2E97A7">
+                <Frame Style="{StaticResource Frame-Entry-blue}" BorderColor="#2E97A7">
+                    <Entry Placeholder="Placa" PlaceholderColor="#2E97A7" TextColor="#2E97A7"
+                       Style="{StaticResource Entry-blue}" 
+                       Text="{Binding Auto.id}"/>
+                </Frame>
+            </Frame>
+
+            <Frame Grid.Row="1" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#2E97A7">
+                <Frame Style="{StaticResource Frame-Entry-blue}" BorderColor="#2E97A7">
+                    <Entry Placeholder="Póliza" PlaceholderColor="#2E97A7" TextColor="#2E97A7"
+                       Style="{StaticResource Entry-blue}" 
+                       Text="{Binding Auto.poliza}"/>
+                </Frame>
+            </Frame>
+
+            <Frame Grid.Row="2" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#2E97A7">
+                <Frame Style="{StaticResource Frame-Entry-blue}" BorderColor="#2E97A7">
+                    <Entry Placeholder="Marca" PlaceholderColor="#2E97A7" TextColor="#2E97A7"
+                       Style="{StaticResource Entry-blue}" 
+                       Text="{Binding Auto.marca}"/>
+                </Frame>
+            </Frame>
+
+            <Frame Grid.Row="3" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#2E97A7">
+                <Frame Style="{StaticResource Frame-Entry-blue}" BorderColor="#2E97A7">
+                    <Entry Placeholder="Modelo" PlaceholderColor="#2E97A7" TextColor="#2E97A7"
+                       Style="{StaticResource Entry-blue}" 
+                       Text="{Binding Auto.modelo}"/>
+                </Frame>
+            </Frame>
+
+            <Frame Grid.Row="4" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#2E97A7">
+                <Frame Style="{StaticResource Frame-Entry-blue}" BorderColor="#2E97A7">
+                    <Entry Placeholder="Tipo de auto" PlaceholderColor="#2E97A7" TextColor="#2E97A7"
+                       Style="{StaticResource Entry-blue}" 
+                       Text="{Binding Auto.tipo}"/>
+                </Frame>
+            </Frame>
+
+            <Frame Grid.Row="5" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#2E97A7">
+                <Frame Style="{StaticResource Frame-Entry-blue}" BorderColor="#2E97A7">
+                    <Entry Placeholder="Año" PlaceholderColor="#2E97A7" TextColor="#2E97A7"
+                       Style="{StaticResource Entry-blue}" 
+                       Text="{Binding Auto.anio}"/>
+                </Frame>
+            </Frame>
+        </Grid>
+
+        <Button Grid.Row="2"
+            Command="{Binding Registrarse}" 
+            Text="Registrarse"
+            Style="{StaticResource btn-blue}" Background="#2E97A7"/>
+    </Grid>
+</ContentPage>

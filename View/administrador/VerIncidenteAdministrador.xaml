@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.administrador.VerIncidenteAdministrador"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="#EEEEEE">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Barra -->
+                <Frame Grid.Row="0" BackgroundColor="#362FD9">
+                    <Grid>
+                        <Image Grid.Column="0" Source="backpf.png" HorizontalOptions="Start"
+                               HeightRequest="40">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Back}" CommandParameter="back"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Grid.Column="1" Text="SafeRide" FontSize="25" TextColor="#EEEEEE" HorizontalOptions="Center"/>
+                        <Image Grid.Column="2" Source="usuariopfwhite.png" HorizontalOptions="End"
+                               HeightRequest="40">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Profile}" CommandParameter="perfil"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </Frame>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0"
+                           Text="Agente asignado" Margin="0,0,0,10"
+                           Style="{StaticResource Title}" HorizontalOptions="Center"/>
+                    <Frame Grid.Row="1"
+                           Style="{StaticResource Frame-Entry-blue}"
+                           HeightRequest="40">
+                        <Picker x:Name="PickerAgentes" TextColor="#362FD9"
+                                Title="Ningún Agente Asignado">
+                        </Picker>
+                    </Frame>
+                </Grid>
+
+                <Button Grid.Row="2"
+                        Text="Iniciar Chat//" Margin="0,50,0,0"
+                        Style="{StaticResource btn-blue}" WidthRequest="200"
+                        Command="{Binding IniciarChat}"
+                        CommandParameter="{Binding Incidente.id}" >
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding HabilitarChat}" Value="desabilitado">
+                            <Setter Property="BackgroundColor" Value="Gray" />
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0"
+                           Text="Descripción" Margin="0,50,0,10"
+                           Style="{StaticResource Title}" HorizontalOptions="Center"/>
+                    <Frame Grid.Row="1"
+                           Style="{StaticResource Frame-Entry-blue}" CornerRadius="0">
+                        <Label Style="{StaticResource Lbl-Element}"
+                               Text="{Binding Incidente.descripcion}"
+                               HorizontalOptions="Center"/>
+                    </Frame>
+                </Grid>
+
+                <Button Grid.Row="4"
+                        Text="{Binding Incidente.estado}" TextColor="White" Margin="0,50,0,0"
+                        Style="{StaticResource btn-white}"
+                        HorizontalOptions="Center">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Incidente.estado}" Value="Pendiente">
+                            <Setter Property="BorderColor" Value="Crimson" />
+                            <Setter Property="TextColor" Value="Crimson" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding Incidente.estado}" Value="Asignado">
+                            <Setter Property="BorderColor" Value="#1AACAC" />
+                            <Setter Property="TextColor" Value="#1AACAC" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding Incidente.estado}" Value="Procesando">
+                            <Setter Property="BorderColor" Value="#FFC000" />
+                            <Setter Property="TextColor" Value="#FFC000" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding Incidente.estado}" Value="Finalizado">
+                            <Setter Property="BorderColor" Value="#362FD9" />
+                            <Setter Property="TextColor" Value="#362FD9" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Grid Grid.Row="5" HorizontalOptions="Center"
+                      ColumnSpacing="0" WidthRequest="480"
+                      Margin="0,50,0,0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".1*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0"
+                           Text="Datos"
+                           VerticalOptions="Start"
+                           Style="{StaticResource Title}"
+                           Margin="0,0,0,10"/>
+
+                    <Grid Grid.Row="1" ColumnSpacing="0">
+                        <!--Izquierda-->
+                        <Frame Grid.Row="0" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="ID:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="Fecha:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="Hora:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+
+                        <Frame Grid.Row="3" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="Ubicación:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+
+                        <Frame Grid.Row="4" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="Cédula Reportador:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+
+                        <Frame Grid.Row="5" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="Cédula Afectado:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+                        <!--Izquierda-->
+
+                        <!--Derecha-->
+                        <Frame Grid.Row="0" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="{Binding Incidente.id}"
+                                   Style="{StaticResource Lbl-Element}"/>
+                        </Frame>
+
+                        <Frame Grid.Row="1" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="{Binding Incidente.fecha}"
+                                   Style="{StaticResource Lbl-Element}"/>
+                        </Frame>
+
+                        <Frame Grid.Row="2" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="{Binding Incidente.hora}"
+                                   Style="{StaticResource Lbl-Element}"/>
+                        </Frame>
+
+                        <Frame Grid.Row="3" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="{Binding Incidente.ubicacion}"
+                                   Style="{StaticResource Lbl-Element}"/>
+                        </Frame>
+
+                        <Frame Grid.Row="4" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="{Binding Incidente.id_reportador}"
+                                   Style="{StaticResource Lbl-Element}"/>
+                        </Frame>
+
+                        <Frame Grid.Row="5" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                            <Label Text="{Binding Incidente.id_afectado}"
+                                   Style="{StaticResource Lbl-Element}"/>
+                        </Frame>
+                        <!--Derecha-->
+                    </Grid>
+                </Grid>
+
+                <Button Grid.Row="6"
+                        Margin="0,50,0,50"
+                        Text="Actualizar"
+                        Command="{Binding Actualizar}"
+                        Style="{StaticResource btn-blue}"/>
+            </Grid>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

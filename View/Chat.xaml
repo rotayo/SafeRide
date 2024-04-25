@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.Chat"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#EEEEEE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Barra -->
+            <Frame Grid.Row="0" BackgroundColor="#362FD9" WidthRequest="60">
+                <Grid>
+                    <Image Grid.Column="0" Source="backpf.png" HorizontalOptions="Start" HeightRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                         Command="{Binding Back}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="1" Text="SafeRide" FontSize="25" TextColor="#EEEEEE" HorizontalOptions="Center"/>
+                    <Image Grid.Column="2" Source="usuariopfwhite.png" HorizontalOptions="End" HeightRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                          Command="{Binding Profile}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </Frame>
+
+            <ListView x:Name="ListaMensajes" Grid.Row="1" RowHeight="150" Margin="2" ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Label  Grid.Row="0" HorizontalOptions="End" Margin="0,10,50,0"
+                                        Text="{Binding Nombre}" Style="{StaticResource Lbl-Element}">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Color}" Value="azul">
+                                            <Setter Property="HorizontalOptions" Value="Start"/>
+                                            <Setter Property="Margin" Value="50,10,0,0"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+
+                                <Frame  Grid.Row="1"
+                                        Style="{StaticResource Frame-Message}">
+                                    
+                                    <Label Text="{Binding Texto}" Style="{StaticResource Lbl-Message}">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding Color}" Value="azul">
+                                                <Setter Property="TextColor" Value="#EEEEEE"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+                                    
+                                    <Frame.Triggers>
+                                        <DataTrigger TargetType="Frame" Binding="{Binding Color}" Value="azul">
+                                            <Setter Property="BackgroundColor" Value="#362FD9"/>
+                                            <Setter Property="HorizontalOptions" Value="Start" />
+                                        </DataTrigger>
+                                    </Frame.Triggers>
+                                    
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Grid Grid.Row="2" HeightRequest="200" Margin="10,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Column="0" Style="{StaticResource Frame-Entry-blue}" 
+                       Padding="1" BackgroundColor="#2E97A7">
+                    <Frame Style="{StaticResource Frame-Entry-blue}">
+                        <Entry Placeholder="Escriba un Mensaje"
+                               Style="{StaticResource Entry-blue}"
+                               Text="{Binding MensajeAEnviar}"/>
+                    </Frame>
+                </Frame>
+                <Button Grid.Column="1" 
+                        Text="Enviar" WidthRequest="100"
+                        Style="{StaticResource btn-blue}"
+                        Command="{Binding EnviarMensaje}"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

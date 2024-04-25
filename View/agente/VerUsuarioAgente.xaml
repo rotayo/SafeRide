@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.agente.VerUsuarioAgente"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Barra -->
+            <Frame Grid.Row="0" BackgroundColor="#362FD9">
+                <Grid>
+                    <Image Grid.Column="0" Source="backpf.png" HorizontalOptions="Start"
+                               HeightRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                    Command="{Binding Back}" CommandParameter="back"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="1" Text="SafeRide" FontSize="25" TextColor="#EEEEEE" HorizontalOptions="Center"/>
+                    <Image Grid.Column="2" Source="usuariopfwhite.png" HorizontalOptions="End"
+                               HeightRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                    Command="{Binding Profile}" CommandParameter="perfil"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </Frame>
+
+            <Grid Grid.Row="1" HorizontalOptions="Center"
+                      ColumnSpacing="0" WidthRequest="480">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                           Text="{Binding Usuario.id}"
+                           VerticalOptions="Start"
+                           Style="{StaticResource Title}"/>
+
+                <Grid Grid.Row="1" ColumnSpacing="0">
+                    <!--Izquierda-->
+                    <Frame Grid.Row="0" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="Nombre:"
+                               Style="{StaticResource Lbl-Element}"
+                               HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="1" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="Apellido:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="Teléfono:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="3" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                        <Label     Text="Email:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+                    <!--Izquierda-->
+
+                    <!--Derecha-->
+                    <Frame Grid.Row="0" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="{Binding Usuario.nombre}"
+                               Style="{StaticResource Lbl-Element}"
+                               HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="1" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="{Binding Usuario.apellido}"
+                               Style="{StaticResource Lbl-Element}"
+                               HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="{Binding Usuario.telefono}"
+                               Style="{StaticResource Lbl-Element}"
+                               HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="3" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="{Binding Usuario.email}"
+                               Style="{StaticResource Lbl-Element}"
+                               HorizontalOptions="Center"/>
+                    </Frame>
+                    <!--Derecha-->
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2" HorizontalOptions="Center" Margin="0,50,0,0"
+                      WidthRequest="480">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                           Text="{Binding Auto.id}"
+                           VerticalOptions="Start"
+                           Style="{StaticResource Title}"/>
+
+                <Grid Grid.Row="1" ColumnSpacing="0" >
+                    <!--Izquierda-->
+                    <Frame Grid.Row="0" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="Poliza:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="1" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="Marca:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="Modelo:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="3" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="Tipo:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="4" Grid.Column="0" 
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="Año:"
+                                   Style="{StaticResource Lbl-Element}"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+                    <!--Izquierda-->
+
+                    <!--Derecha-->
+                    <Frame Grid.Row="0" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="{Binding Auto.poliza}"
+                                   Style="{StaticResource Lbl-Element}" FontAttributes="None"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="1" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="{Binding Auto.marca}"
+                                   Style="{StaticResource Lbl-Element}" FontAttributes="None"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="{Binding Auto.modelo}"
+                                   Style="{StaticResource Lbl-Element}" FontAttributes="None"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="3" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="{Binding Auto.tipo}"
+                                   Style="{StaticResource Lbl-Element}" FontAttributes="None"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Frame Grid.Row="4" Grid.Column="1"
+                               Style="{StaticResource Frame-Table}">
+                        <Label Text="{Binding Auto.anio}"
+                                   Style="{StaticResource Lbl-Element}" FontAttributes="None"
+                                   HorizontalOptions="Center"/>
+                    </Frame>
+                    <!--Derecha-->
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

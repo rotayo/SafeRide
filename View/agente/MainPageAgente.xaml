@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.agente.MainPageAgente"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#EEEEEE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Barra -->
+            <Frame Grid.Row="0" BackgroundColor="#362FD9">
+                <Grid>
+                    <Label Grid.Column="1" Text="SafeRide" FontSize="25" TextColor="#EEEEEE" HorizontalOptions="Center"/>
+                    <Image Grid.Column="2" Source="usuariopfwhite.png" HorizontalOptions="End" HeightRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Profile}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </Frame>
+
+            <Label Grid.Row="1"
+                   Text="Incidentes Asignados"
+                   VerticalOptions="End"
+                   Style="{StaticResource Title}"/>
+
+            <ListView x:Name="listaIncidentes" Grid.Row="2" RowHeight="240" ItemSelected="listaIncidentes_ItemSelected">
+                <ListView.ItemTemplate >
+                    <DataTemplate >
+                        <ViewCell >
+                            <Frame Grid.Row="0" Style="{StaticResource Frame-Element}"
+                                   Margin="0,10,0,10" BorderColor="#362FD9">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label  Grid.Row="0" 
+                                            Text="{Binding id_lbl}" FontSize="Large"
+                                            Style="{StaticResource Lbl-Element}"/>
+                                    <Image  Grid.Row="0" Grid.Column="1"
+                                            Style="{StaticResource Img-Element}"
+                                            Source="backpf.png"/>
+                                    <Label  Grid.Row="1" 
+                                            Text="{Binding ubicacion}" FontSize="Large"
+                                            Style="{StaticResource Lbl-Element}"/>
+                                    <Label  Grid.Row="2"
+                                            Text="{Binding fechaHora}" Grid.ColumnSpan="2"
+                                            Style="{StaticResource Lbl-Element}"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PaginaIncidente}" CommandParameter="{Binding id}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

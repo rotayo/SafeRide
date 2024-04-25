@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="ProyectoFinal.MainPage"
+              xmlns:vm="clr-namespace:ProyectoFinal.ViewModel"
+              NavigationPage.HasNavigationBar="False">
+
+    <Grid BackgroundColor="#EEEEEE">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" 
+               Source="carroLogo.png"
+               HeightRequest="150"
+               WidthRequest="150"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Margin="0,0,0,50"/>
+
+        <Label Grid.Row="0"
+               Text="SafeRide" 
+               Style="{StaticResource Title}" VerticalOptions="End" Margin="0,0,0,50"/>
+
+        <Frame Grid.Row="1" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#362FD9"
+               VerticalOptions="Start">
+            <Frame Style="{StaticResource Frame-Entry-blue}">
+                <Entry Placeholder="email" 
+                       Style="{StaticResource Entry-blue}" 
+                       Text="{Binding Usuario.email}"/>
+            </Frame>
+        </Frame>
+
+        <Frame Grid.Row="1" Style="{StaticResource Frame-Entry-blue}" 
+               Padding="1" BackgroundColor="#362FD9"
+               Margin="0,60,0,0">
+            <Frame Style="{StaticResource Frame-Entry-blue}">
+                <Entry 
+                       Placeholder="contraseña" 
+                       Text="{Binding Usuario.contrasena}"
+                       Style="{StaticResource Entry-blue}"
+                       IsPassword="True"/>
+            </Frame>
+        </Frame>
+
+        <Button Grid.Row="2" Text="Iniciar sesión"
+                Command="{Binding Login}" 
+                Style="{StaticResource btn-blue}"
+                VerticalOptions="Start"/>
+
+        <Button Grid.Row="2" Text="Crear Cuenta" 
+                Command="{Binding Sign}"
+                Style="{StaticResource btn-white}"/>
+    </Grid>
+
+</ContentPage>
+

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.View.PerfilPage"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="lbl-uno">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="TextColor" Value="#EEEEEE"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <Grid BackgroundColor="#EEEEEE">
+            <Frame Grid.Row="0" BackgroundColor="#362FD9">
+                <StackLayout>
+                    <Image Source="backpf.png" 
+                           WidthRequest="40" 
+                           HeightRequest="40"
+                           HorizontalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Back}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="Perfil"
+                           TextColor="#EEEEEE"
+                           Style="{StaticResource Title}"/>
+                    <Image Source="usuariopfwhite.png"
+                           WidthRequest="150"
+                           HeightRequest="150"
+                           Margin="0,20,0,0"/>
+                    <Grid WidthRequest="300" 
+                          HorizontalOptions="Center"
+                          Margin="0,20,0,0"
+                          ColumnSpacing="2">
+                        <Label Grid.Column="0"
+                               HorizontalOptions="End"
+                               Text="{Binding Usuario.nombre}" 
+                               Style="{StaticResource lbl-uno}"/>
+                        <Label Grid.Column="1" 
+                               HorizontalOptions="Start"
+                               Text="{Binding Usuario.apellido}" 
+                               Style="{StaticResource lbl-uno}"/>
+                    </Grid>
+                    <Label Text="{Binding Usuario.id}" 
+                           Style="{StaticResource lbl-uno}"/>
+                </StackLayout>
+            </Frame>
+
+            <Grid Grid.Row="1">
+                <Button Grid.Row="0" 
+                        Text="Editar"
+                        VerticalOptions="Center"
+                        BackgroundColor="#2E97A7"
+                        Style="{StaticResource btn-blue}"
+                        Command="{Binding Editar}"/>
+                <Button Grid.Row="1" 
+                        Text="Cerrar Sesion"
+                        VerticalOptions="Start"
+                        BackgroundColor="Crimson"
+                        Style="{StaticResource btn-blue}"
+                        Command="{Binding CerrarSesion}"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
